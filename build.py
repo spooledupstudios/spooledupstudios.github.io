@@ -1,0 +1,78 @@
+import re, html, os
+SRC = os.path.expanduser('~/mnt/Forge/Projects/whats-for-dinner/appstore/privacy-policy.md')
+CSS = """
+:root{--bg:#FBF8F4;--surface:#FFFFFF;--fg:#2A1B12;--muted:#6E5C4F;--line:#E7DED4;--accent:#B4381F;
+--display:"Fraunces",Georgia,"Times New Roman",serif;--body:"Source Sans 3",-apple-system,"Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root{--bg:#1C1511;--surface:#261D18;--fg:#F3E9DE;--muted:#B8A696;--line:#3A2E27;--accent:#F08A6C;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--body);padding-inline:16px;padding-block:32px 64px}
+main{max-width:680px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(28px,6vw,38px)}
+h2{font-size:22px;margin-top:36px;padding-top:20px;border-top:1px solid var(--line)}
+h3{font-size:18px;margin-top:22px}
+p,ul{margin:10px 0}ul{padding-left:22px}li{margin:4px 0}
+.sub{color:var(--muted);font-size:15px;margin-top:6px}
+.box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;margin-top:22px}
+.addr{font-weight:600;font-size:19px;overflow-wrap:anywhere}
+a{color:var(--accent)}a:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:15px}
+"""
+def page(title, body, desc):
+    return f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{html.escape(title)}</title><meta name="description" content="{html.escape(desc)}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>{CSS}</style></head><body><main>
+{body}
+<nav><a href="/">Spooled Up Studios</a><a href="/support/">Support</a><a href="/privacy/">Privacy policy</a></nav>
+</main></body></html>
+"""
+def inline(t):
+    t = html.escape(t, quote=False)
+    t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
+    return t
+out=[]; lst=False
+for line in open(SRC, encoding='utf-8').read().splitlines():
+    if lst and not line.startswith('- '): out.append('</ul>'); lst=False
+    if not line.strip(): continue
+    if line.startswith('# '): out.append(f'<h1>{inline(line[2:])}</h1>')
+    elif line.startswith('## '): out.append(f'<h2>{inline(line[3:])}</h2>')
+    elif line.startswith('### '): out.append(f'<h3>{inline(line[4:])}</h3>')
+    elif line.startswith('- '):
+        if not lst: out.append('<ul>'); lst=True
+        out.append(f'<li>{inline(line[2:])}</li>')
+    elif line.startswith('**The short version'): out.append(f'<div class="box">{inline(line)}</div>')
+    elif line.startswith('Last updated'): out.append(f'<p class="sub">{inline(line)}</p>')
+    elif line.startswith('support@'): out.append('<p><a href="mailto:support@spooledupstudios.com">support@spooledupstudios.com</a></p>')
+    else: out.append(f'<p>{inline(line)}</p>')
+if lst: out.append('</ul>')
+os.makedirs('privacy',exist_ok=True); os.makedirs('support',exist_ok=True)
+open('privacy/index.html','w').write(page("What's for Dinner? Privacy Policy",'\n'.join(out),"Privacy policy for the What's for Dinner? app by Spooled Up Studios."))
+
+support = """<h1>What's for Dinner? Support</h1>
+<p class="sub">By Spooled Up Studios</p>
+<div class="box"><span class="addr"><a href="mailto:support@spooledupstudios.com">support@spooledupstudios.com</a></span><br><span class="sub">Email us any time. We reply within two days.</span></div>
+<p>Include your iPhone model, iOS version and what you tapped before the problem. A screenshot helps.</p>
+<h2>Common questions</h2>
+<p><strong>The app can't find places near me.</strong> Open the iPhone Settings app, then Privacy &amp; Security, then Location Services, then What's for Dinner?, and choose While Using the App. You can also type a town or ZIP code in the app.</p>
+<p><strong>A place is closed or gone.</strong> Map data comes from Apple Maps and does not include opening hours. Tap Call on the result to check, or spin again.</p>
+<p><strong>How do I delete what I shared online?</strong> In the app, open Settings, then Privacy, and tap the button that removes everything you shared online. It deletes your profile, leaderboard entries, ratings, friend links, invites and usage stats. Data on your phone is removed when you delete the app.</p>
+<p><strong>How do I report or block someone?</strong> Open their entry on a leaderboard or their profile and tap Report or Block. We review reports within a day.</p>
+<p><strong>How do I turn off usage stats or sharing?</strong> Settings, then Privacy, then Share usage stats. Leaderboards, ratings and your public profile each have their own switch in Settings.</p>
+<p><strong>Friends, invites or leaderboards don't load.</strong> These use your iCloud account. Make sure you are signed in to iCloud in the iPhone Settings app and have a connection, then reopen the app.</p>
+<h2>Privacy</h2>
+<p>Read what the app stores and shares in the <a href="/privacy/">privacy policy</a>.</p>"""
+open('support/index.html','w').write(page("What's for Dinner? Support",support,"Support for the What's for Dinner? app by Spooled Up Studios."))
+
+home = """<h1>Spooled Up Studios</h1>
+<p class="sub">Small apps, built carefully.</p>
+<h2>What's for Dinner?</h2>
+<p>Spin to pick a nearby restaurant, a recipe to cook, or something to do.</p>
+<p><a href="/support/">Support</a> &middot; <a href="/privacy/">Privacy policy</a></p>
+<h2>Contact</h2>
+<p><a href="mailto:info@spooledupstudios.com">info@spooledupstudios.com</a></p>"""
+open('index.html','w').write(page("Spooled Up Studios",home,"Spooled Up Studios makes small apps, including What's for Dinner?."))
+open('CNAME','w').write('spooledupstudios.com\n')
+open('.nojekyll','w').write('')
