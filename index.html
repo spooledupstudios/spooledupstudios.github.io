@@ -1,32 +1,144 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Spooled Up Studios</title><meta name="description" content="Spooled Up Studios makes small apps, including What&#x27;s for Dinner?.">
+<title>Spooled Up Studios | Independent app studio, New York</title>
+<meta name="description" content="Spooled Up Studios is an independent app development studio in New York. We build fast, useful apps, including What&#x27;s for Dinner?. Join the beta.">
+<link rel="canonical" href="https://spooledupstudios.com/">
+<meta name="theme-color" content="#0E1726">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Spooled Up Studios">
+<meta property="og:title" content="Spooled Up Studios | Independent app studio, New York"><meta property="og:description" content="Spooled Up Studios is an independent app development studio in New York. We build fast, useful apps, including What&#x27;s for Dinner?. Join the beta.">
+<meta property="og:url" content="https://spooledupstudios.com/"><meta property="og:image" content="https://spooledupstudios.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon-512.svg"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/favicon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap">
 <style>
-:root{--bg:#FBF8F4;--surface:#FFFFFF;--fg:#2A1B12;--muted:#6E5C4F;--line:#E7DED4;--accent:#B4381F;
---display:"Fraunces",Georgia,"Times New Roman",serif;--body:"Source Sans 3",-apple-system,"Segoe UI",system-ui,sans-serif}
-@media (prefers-color-scheme:dark){:root{--bg:#1C1511;--surface:#261D18;--fg:#F3E9DE;--muted:#B8A696;--line:#3A2E27;--accent:#F08A6C;color-scheme:dark}}
+:root{--navy:#0E1726;--mid:#141F33;--deep:#070D18;--orange:#FF5A1F;--amber:#FFB03B;--steel:#C7D0DE;--muted:#8B98B0;--line:#24324B;--white:#fff;
+--font:Inter,-apple-system,"Segoe UI",system-ui,sans-serif;color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 var(--body);padding-inline:16px;padding-block:32px 64px}
-main{max-width:680px;margin:0 auto}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
-h1{font-size:clamp(28px,6vw,38px)}
-h2{font-size:22px;margin-top:36px;padding-top:20px;border-top:1px solid var(--line)}
-h3{font-size:18px;margin-top:22px}
-p,ul{margin:10px 0}ul{padding-left:22px}li{margin:4px 0}
-.sub{color:var(--muted);font-size:15px;margin-top:6px}
-.box{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:14px 18px;margin-top:22px}
-.addr{font-weight:600;font-size:19px;overflow-wrap:anywhere}
-a{color:var(--accent)}a:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
-nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:15px}
-</style></head><body><main>
-<h1>Spooled Up Studios</h1>
-<p class="sub">Small apps, built carefully.</p>
-<h2>What's for Dinner?</h2>
-<p>Spin to pick a nearby restaurant, a recipe to cook, or something to do.</p>
-<p><a href="/support/">Support</a> &middot; <a href="/privacy/">Privacy policy</a></p>
-<h2>Contact</h2>
-<p><a href="mailto:info@spooledupstudios.com">info@spooledupstudios.com</a></p>
-<nav><a href="/">Spooled Up Studios</a><a href="/support/">Support</a><a href="/privacy/">Privacy policy</a></nav>
-</main></body></html>
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--steel);font:17px/1.65 var(--font);-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{color:var(--white);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(40px,8vw,76px);font-weight:900;letter-spacing:-.035em}
+h2{font-size:clamp(28px,4.5vw,40px)}
+h3{font-size:21px;letter-spacing:-.01em}
+p{margin:12px 0}
+.eyebrow{color:var(--orange);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 14px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--orange);color:var(--navy);padding:8px 14px;border-radius:8px;z-index:20}
+.skip:focus{left:8px}
+header.top{position:sticky;top:0;z-index:10;background:rgba(14,23,38,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
+.logo img{height:30px;width:auto;display:block}
+nav.main{display:flex;align-items:center;gap:6px 22px;flex-wrap:wrap}
+nav.main a{color:var(--steel);text-decoration:none;font-weight:600;font-size:15px}
+nav.main a:hover,nav.main a[aria-current=page]{color:var(--white)}
+.btn{display:inline-block;background:var(--orange);color:var(--navy)!important;font:700 16px var(--font);padding:13px 22px;border-radius:10px;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{background:#ff7340}
+.btn.ghost{background:transparent;color:var(--white)!important;border:1.5px solid #3A4B69}
+.btn.ghost:hover{border-color:var(--steel);background:transparent}
+.btn.small{padding:9px 16px;font-size:14px}
+nav.main .btn{color:var(--navy)}
+.hero{padding:96px 0 84px;background:radial-gradient(900px 420px at 85% -10%,rgba(255,90,31,.20),transparent 60%),var(--navy)}
+.hero p.lead{font-size:clamp(18px,2.4vw,22px);max-width:620px;color:var(--steel);margin:22px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+section.block{padding:84px 0;border-top:1px solid var(--line)}
+section.block.alt{background:var(--mid)}
+.grid{display:grid;gap:18px;margin-top:34px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--mid);border:1px solid var(--line);border-radius:16px;padding:26px}
+section.alt .card{background:var(--navy)}
+.card p{margin:10px 0 0;color:var(--steel)}
+.card .tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);border:1px solid #4a3a1e;border-radius:999px;padding:4px 10px;margin-bottom:14px}
+.num{color:var(--orange);font-weight:900;font-size:15px;letter-spacing:.1em;margin-bottom:10px}
+.band{background:linear-gradient(120deg,#1a2740,#2a1a14);border:1px solid var(--line);border-radius:20px;padding:44px 32px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+.band h2{font-size:clamp(26px,4vw,34px)}
+.band p{margin:8px 0 0;max-width:540px}
+.page-head{padding:72px 0 40px}
+.page-head p.lead{font-size:20px;max-width:680px;margin-top:18px}
+.prose{max-width:720px}
+.prose h2{font-size:26px;margin-top:44px}
+.prose h3{margin-top:28px}
+.prose ul{padding-left:22px}.prose li{margin:6px 0}
+dl.facts{display:grid;grid-template-columns:max-content 1fr;gap:10px 28px;margin:26px 0}
+dl.facts dt{color:var(--muted);font-weight:600}dl.facts dd{margin:0;color:var(--white)}
+form.beta{display:grid;gap:18px;max-width:560px;margin-top:28px}
+label{display:grid;gap:7px;color:var(--white);font-weight:600;font-size:15px}
+label small{color:var(--muted);font-weight:400}
+input,select,textarea{font:16px var(--font);background:var(--mid);color:var(--white);border:1.5px solid #34466a;border-radius:10px;padding:13px 14px;width:100%}
+input::placeholder{color:#6f7d96}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.note{color:var(--muted);font-size:14px}
+.ok{background:#12301f;border:1px solid #2F7A46;color:#cfeedd;border-radius:12px;padding:16px 18px}
+.err{background:#3a1a14;border:1px solid #a33a22;color:#ffd9cf;border-radius:12px;padding:16px 18px}
+footer.foot{border-top:1px solid var(--line);background:var(--deep);padding:48px 0 36px;margin-top:0;font-size:15px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px}
+.fgrid h4{color:var(--white);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
+.fgrid a{display:block;color:var(--steel);text-decoration:none;margin:7px 0}.fgrid a:hover{color:var(--white)}
+.legal{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+@media(max-width:720px){.hero{padding:64px 0 56px}section.block{padding:60px 0}nav.main{gap:4px 16px}.bar{height:auto;padding:12px 0;flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Spooled Up Studios","url":"https://spooledupstudios.com","logo":"https://spooledupstudios.com/assets/favicon-512.png","email":"info@spooledupstudios.com","address":{"@type":"PostalAddress","addressRegion":"NY","addressCountry":"US"}}</script>
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap bar">
+<a class="logo" href="/" aria-label="Spooled Up Studios home"><img src="/assets/spooled-up-lockup-horizontal-for-dark-bg.svg" alt="Spooled Up Studios" width="190" height="30"></a>
+<nav class="main" aria-label="Main"><a href="/apps/">Apps</a><a href="/about/">About</a><a href="/contact/">Contact</a><a class="btn small" href="/beta/">Join the beta</a></nav>
+</div></header>
+<main id="main">
+
+<section class="hero"><div class="wrap">
+<p class="eyebrow">Independent app studio &middot; New York</p>
+<h1>Built to move.</h1>
+<p class="lead">Spooled Up Studios designs and ships fast, useful apps, then keeps improving them long after launch. Full power from day one.</p>
+<div class="cta"><a class="btn" href="/beta/">Join the beta</a><a class="btn ghost" href="/apps/">See our apps</a></div>
+</div></section>
+
+<section class="block" id="apps"><div class="wrap">
+<p class="eyebrow">Our apps</p>
+<h2>Made to be used, not admired.</h2>
+<div class="grid g2">
+<article class="card">
+<span class="tag">In beta</span>
+<h3>What's for Dinner?</h3>
+<p>Can't decide where to eat? Spin for a restaurant near you, a recipe to cook at home, or something to do. Pick together with friends and plan the week.</p>
+<div class="cta" style="margin-top:22px"><a class="btn small" href="/apps/#whats-for-dinner">Learn more</a></div>
+</article>
+<article class="card">
+<span class="tag">Coming</span>
+<h3>More on the way</h3>
+<p>Tools for shops and small businesses, and products with roots in aviation: places where things have to work the first time. Join the beta list to hear first.</p>
+<div class="cta" style="margin-top:22px"><a class="btn small ghost" href="/beta/">Get early access</a></div>
+</article>
+</div></div></section>
+
+<section class="block alt"><div class="wrap">
+<p class="eyebrow">How we build</p>
+<h2>Three rules for everything we ship.</h2>
+<div class="grid g3">
+<div class="card"><div class="num">01</div><h3>Full power, every time</h3><p>We don't ship half-done. If it isn't ready, it waits.</p></div>
+<div class="card"><div class="num">02</div><h3>Built to move</h3><p>Fast to load, fast to use, fast to improve. Updates keep coming after launch.</p></div>
+<div class="card"><div class="num">03</div><h3>Made for everywhere</h3><p>Global from the first release, on the phone in your pocket or the browser on your desk.</p></div>
+</div></div></section>
+
+<section class="block"><div class="wrap">
+<div class="band">
+<div><h2>Try our apps before anyone else.</h2><p>Join the beta list for early builds of What's for Dinner? No spam, just invites.</p></div>
+<a class="btn" href="/beta/">Join the beta</a>
+</div></div></section>
+
+</main>
+<footer class="foot"><div class="wrap">
+<div class="fgrid">
+<div><a href="/" aria-label="Spooled Up Studios"><img src="/assets/spooled-up-lockup-horizontal-for-dark-bg.svg" alt="Spooled Up Studios" width="170" height="27"></a><p class="note" style="margin-top:14px">Independent app studio.<br>Built in New York. Made for everywhere.</p></div>
+<div><h4>Studio</h4><a href="/apps/">Apps</a><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/beta/">Join the beta</a></div>
+<div><h4>What's for Dinner?</h4><a href="/support/">Support</a><a href="/privacy/">Privacy policy</a></div>
+<div><h4>Legal</h4><a href="/terms/">Terms of use</a><a href="/privacy/">Privacy policy</a><a href="mailto:info@spooledupstudios.com">info@spooledupstudios.com</a></div>
+</div>
+<div class="legal"><span>&copy; 2026 Spooled Up Studios LLC. All rights reserved.</span><span>New York, USA</span></div>
+</div></footer>
+</body></html>

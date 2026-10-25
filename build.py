@@ -66,13 +66,6 @@ support = """<h1>What's for Dinner? Support</h1>
 <p>Read what the app stores and shares in the <a href="/privacy/">privacy policy</a>.</p>"""
 open('support/index.html','w').write(page("What's for Dinner? Support",support,"Support for the What's for Dinner? app by Spooled Up Studios."))
 
-home = """<h1>Spooled Up Studios</h1>
-<p class="sub">Small apps, built carefully.</p>
-<h2>What's for Dinner?</h2>
-<p>Spin to pick a nearby restaurant, a recipe to cook, or something to do.</p>
-<p><a href="/support/">Support</a> &middot; <a href="/privacy/">Privacy policy</a></p>
-<h2>Contact</h2>
-<p><a href="mailto:info@spooledupstudios.com">info@spooledupstudios.com</a></p>"""
-open('index.html','w').write(page("Spooled Up Studios",home,"Spooled Up Studios makes small apps, including What's for Dinner?."))
+# Home page now comes from build_studio.py (do not regenerate it here).
 open('CNAME','w').write('spooledupstudios.com\n')
 open('.nojekyll','w').write('')
